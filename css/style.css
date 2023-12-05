@@ -1,0 +1,248 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Mulish", sans-serif;
+}
+
+/* body */
+body {
+    background-image: url("../Images/background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* temporary */
+.spacer2 {
+    height: 100vw;
+
+}
+
+.spacer {
+    margin: 0;
+    width: 100%;
+    background-image: url("../Images/background/secondary-background2.jpg");
+    background-size: cover;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.hide {
+    opacity: 0;
+}
+
+/* header-following */
+.primary-bar {
+    position: fixed;
+    background-color: rgba(207, 159, 255, 0.8);
+    color: #fff;
+    text-align: right;
+    width: 100%;
+    top: 0;
+    box-shadow: rgb(0, 0, 0) 0 0 10px;
+}
+
+.donut {
+    width: 100%;
+    height: 100%;
+}
+
+.text {
+    display: inline-flex;
+    margin-right: 1vw;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.holder {
+    position: fixed;
+    top: 0;
+    left: 25%;
+    width: 50%;
+}
+
+/* banner */
+.container {
+    width: 100vw;
+    height: 85vh;
+    overflow: hidden;
+}
+
+.wrapper {
+    width: 400%;
+    height: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+}
+
+.slide-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-25%);
+    }
+
+    55% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-50%);
+    }
+
+    80% {
+        transform: translateX(-75%);
+    }
+
+    100% {
+        transform: translateX(-75%);
+    }
+}
+
+/* product-catagory */
+.product {
+    overflow: hidden;
+    background-color: rgba(148, 0, 211, 0.2);
+}
+
+.product-category {
+    margin-top: 1vw;
+    margin-bottom: 1.5vw;
+    margin-left: 1vw;
+}
+
+.sales {
+    display: flex;
+    height: 40vh;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.donut-sale {
+    background-color: black;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.donut-sale:hover {
+    opacity: 0.2;
+}
+
+.donut-buy {
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+
+.donut-name,
+.donut-price {
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+.donut-price {
+    font-weight: bold;
+}
+
+.buyme-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 45%;
+    text-align: center;
+}
+
+.info-texts {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 35%;
+    text-align: center;
+}
+
+.specific-sale {
+    background-color: white;
+    margin-right: 1vw;
+    border-radius: 10px;
+    min-width: 15vw;
+    min-width: 15vw;
+    overflow: hidden;
+}
+
+.product {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+.pre-btn,
+.nxt-btn {
+    transition: 1s;
+    border: none;
+    width: 10vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    cursor: pointer;
+    z-index: 8;
+}
+
+.pre-btn {
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.nxt-btn {
+    right: 0;
+}
+
+.pre-btn img,
+.nxt-btn img {
+    opacity: 0.2;
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+    opacity: 1;
+}
+
+.pre-btn:hover,
+.nxt-btn:hover {
+    transition: 1s;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+}

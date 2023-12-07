@@ -52,11 +52,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ($idklant, '$username', '$name', '$lastname', '$email', '$telefoon', '$password')";
 
         $usernamecheck = "SELECT username FROM klant WHERE username = '$username'";
-
+        $stmt = $pdo->query($usernamecheck);
         $singleusername = $stmt->fetch();
 
-    if ($pdo->query($usernamecheck)) {
+        $medewerkercheck = "SELECT medewerkerusername FROM medewerker WHERE medewerkerusername = '$username'";
+        $stmtmedewerker = $pdo->query($medewerkercheck);
+        $singlemedewerker = $stmtmedewerker->fetch();
+
         if($username === $singleusername['username']) {
+            echo "Error: Please choose a different username";
+        } else if ($username === $singlemedewerker['medewerkerusername']) {
             echo "Error: Please choose a different username";
         } else {
         if ($pdo->query($sql)) {
@@ -64,6 +69,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "New record created successfully";
             header('location: index.php');
         }
-    }
     }
 }

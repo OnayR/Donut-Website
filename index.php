@@ -22,10 +22,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <header>
         <div class="following">
-            <div class="primary-bar">
-            <div class="primary-bar-background">
+        <div class="primary-bar-background">
                 <p class="hide">a</p>
             </div>
+            <div class="primary-bar">
                 <a href="logout.php">a</a>
                 <h1 class="text">Welcome to My Webpage</h1>
                 <h1 class="text"><a href="index.php">Profile</a></h1>
@@ -62,7 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         $donuts = $stmt->fetchAll();
         
         foreach($donuts as $donut) {
-            ?>
+            ?>  
             <!DOCTYPE html>
             
             <div class="specific-sale">
@@ -149,6 +149,5 @@ include 'Donut.php';
                 array_push($donutprijzen, $d);
             }
             $_SESSION['donutprijzen'] = $donutprijzen;
-            header("location: shopping.php");
         }
 ?>

@@ -96,12 +96,20 @@ if ($medewerker['medewerkerusername'] === $username) {
                 $sql = "INSERT INTO donut (iddonut, donutnaam, donutprijs, donuttype, smaak, donutimg, donutdesc)
                 VALUES ($iddonut, '$productnaam', $prijs, '$producttype', '$productsmaak', '$productafbeelding', '$productdesc')";
 
+                $singlename = "SELECT donutnaam FROM donut WHERE donutnaam = '$productnaam'";
+                $stmt = $pdo->query($singlename);
+                $singlename = $stmt->fetch();
+
+                if($productnaam === $singlename['donutnaam']) {
+                    echo "Error: Please choose a different name";
+                } else {
                 if($pdo->query($sql)) {
                     echo "Product added";
                 } else {
                     echo "Error: Please try again";
                 }
             }
+        }
         ?>
     </div>
     </body>

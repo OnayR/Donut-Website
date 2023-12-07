@@ -20,7 +20,6 @@ body {
 .spacer {
     margin: 0;
     width: 100%;
-    background-image: url("../Images/background/secondary-background2.jpg");
     background-size: cover;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
@@ -36,17 +35,18 @@ body {
     position: absolute;
     background-color: rgba(207, 159, 255, 0.8);
     width: 100%;
-    height: 100%;
+    height: 10%;
     z-index: 2;
 }
 
 .primary-bar {
     position: fixed;
     color: #fff;
+    background: rgba(0, 0, 0, 0.1);
     text-align: right;
+    backdrop-filter: blur(10px);
     width: 100%;
     top: 0;
-    box-shadow: rgb(0, 0, 0) 0 0 10px;
     z-index: 10;
 }
 
@@ -132,7 +132,9 @@ body {
 /* product-catagory */
 .product {
     overflow: hidden;
-    background-color: rgba(148, 0, 211, 0.2);
+    background-size: cover;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
 }
 
 .product-category {

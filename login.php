@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
     <title>Login Page</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <div class="head-div">
+    <h1 class="head">Login</h1>
+</div>
+    <div class="container">
+        <div class="wrapper">
     <form method="POST" action="login.php">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
+        <input type="text" id="username" name="username" required class="form-input" placeholder="Username:"><br><br>
+        <label for="password" class="form-text">Password:</label>
+        <input type="password" id="password" name="password" required class="form-input" placeholder="Password:"><br><br>
+        <input type="submit" value="Login" class="form-button">
     </form>
-    <a href="registration.php">register</a>
+</div>
+<p class="link">Don't have an account? <a href="registration.php">Sign up now</a>.</p>
+</div>
 
     <?php
     session_start();

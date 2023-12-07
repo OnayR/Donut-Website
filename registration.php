@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link href="css/login.css" rel="stylesheet" type="text/css">
 </head>
 
 <style>
@@ -14,23 +15,23 @@
 </style>
 
 <body>
-    <h1>Login</h1>
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username"><br><br>
-        <label for="name">Voornaam:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="lastname">Achternaam:</label>
-        <input type="text" id="lastname" name="lastname" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="telefoon">Telefoon:</label>
-        <input type="text" id="telefoon" name="telefoon"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="register">
+    <div class="head-div">
+    <h1 class="head">Register</h1>
+</div>
+    <div class="container">
+        <div class="wrapper">
+        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="text" name="username" required class="form-input" placeholder="Username"><br><br>
+        <input type="text" id="name" name="name" required class="form-input" placeholder="Firstname"><br><br>
+        <input type="text" id="lastname" name="lastname" required class="form-input" placeholder="Lastname"><br><br>
+        <input type="email" id="email" name="email" required class="form-input" placeholder="Email"><br><br>
+        <input type="text" id="telefoon" name="telefoon" class="form-input" placeholder="Phone Number"><br><br>
+        <input type="password" id="password" name="password" required class="form-input" placeholder="Password"><br><br>
+        <input type="submit" value="register" class="form-button">
     </form>
-    <a href="login.php">login</a>
+</div>
+<p class="link">Already have an account? <a href="login.php">Login here</a>.</p>
+</div>
 </body>
 </html>
 

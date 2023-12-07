@@ -20,8 +20,8 @@ let tl2 = gsap.timeline({
     scrollTrigger: {
         trigger: ".primary-bar-background",
         start: "80% top",
-        end: "500 50",
-        scrub: false,
+        end: "500% 50",
+        scrub: true,
         markers: false
     }
 });

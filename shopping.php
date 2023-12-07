@@ -4,8 +4,6 @@ include_once "config.php";
 session_start();
 
 $donutprijzen = $_SESSION['donutprijzen'];
-
-$chocolate = $donutprijzen[0];
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +18,7 @@ $chocolate = $donutprijzen[0];
 <header>
         <div class="order">
           <?php
+          $donuttotaal = 0.0;
       // print_r($donutprijzen);
       foreach($donutprijzen as $donut){
 
@@ -29,9 +28,12 @@ $chocolate = $donutprijzen[0];
           $stmt = $pdo->query($sql);
           $donuts = $stmt->fetch();
 
+
           if($donut->get_price() == 0) {
               echo " ";
             } else {
+              $donuttotaal =$donuttotaal + $donut->get_price() * $donuts['donutprijs'];
+
               // Moest boven de eerste echo staan zodat de eerste form niet onder de eerste echo kwam te staan.
               echo "<form action='shopping.php' method='post'>";
             echo $donut->get_name() . " " . $donut->get_price() . "x " . "€" . $donuts['donutprijs'] . " = " . "€" . ($donuts['donutprijs'] * $donut->get_price());
@@ -47,7 +49,13 @@ $chocolate = $donutprijzen[0];
             echo "<br>";
             }
           }
+          echo "Totaal:";
+          echo "<br>";
+          echo "€" . $donuttotaal;
+          echo "<br>";
           ?>
+          <button type="submit" name="bestel" value="bestel">Bestel</button>
+          </form>
         </div>
     </header>
 </body>
@@ -84,5 +92,4 @@ if(isset($_POST['delete'])) {
   }
   header("location: shopping.php");
 }
-
 ?>

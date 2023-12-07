@@ -20,6 +20,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
 
+<header>
+        <div class="following">
+            <div class="primary-bar">
+            <div class="primary-bar-background">
+                <p class="hide">a</p>
+            </div>
+                <a href="logout.php">a</a>
+                <h1 class="text">Welcome to My Webpage</h1>
+                <h1 class="text"><a href="index.php">Profile</a></h1>
+                <a href="shopping.php"><i class="fa-solid fa-cart-shopping fa-2xl text"></i></a>
+            </div>
+
+            <div class="holder">
+                <img class="donut" src="Images/Donut.png">
+            </div>
+    </header>
+
     <div class="container">
         <div class="wrapper">
             <img class="slide-image" src="Images/slideshow/Donut-1.jpg">
@@ -47,9 +64,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         foreach($donuts as $donut) {
             ?>
             <!DOCTYPE html>
+            
             <div class="specific-sale">
                 <div class="product-image">
-                    <button class="donut-buy">
+                    <button type="submit" name="donut-buy<?php echo $donut['iddonut'] ?>" class="donut-buy">
                         <h2 class="buyme-text">Buy me!</h2>
                         <p class="info-texts"><?php echo $donut['donutdesc'] ?></p>
                         <img src="Images/saved-donuts/<?php echo $donut['donutimg'] ?>" class="donut-sale">
@@ -76,20 +94,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </section>
     <input type="submit" value="Buy" class="numberOfDonuts">
                 </form>
-
-    <header>
-        <div class="following">
-            <div class="primary-bar">
-                <a href="logout.php">a</a>
-                <h1 class="text">Welcome to My Webpage</h1>
-                <h1 class="text"><a href="index.php">Profile</a></h1>
-                <a href="shopping.php"><i class="fa-solid fa-cart-shopping fa-2xl text"></i></a>
-            </div>
-
-            <div class="holder">
-                <img class="donut" src="Images/Donut.png">
-            </div>
-    </header>
 
     <div class="spacer2"></div>
     </div>
@@ -136,14 +140,15 @@ include 'Donut.php';
     
                 $amount = $_POST['numberOfDonuts' . $donut['iddonut']];
                 $amount = (int)$amount;
-                echo "donut " . $donut['donutnaam'] . " " . $amount . " keer besteld <br><br>";
+
+                if(isset($_POST['donut-buy' . $donut['iddonut']])) {
+                    $amount++;
+                  }
                 
                 $d = new Donut($donut['donutnaam'], $amount);
                 array_push($donutprijzen, $d);
             }
-
             $_SESSION['donutprijzen'] = $donutprijzen;
-
-
+            header("location: shopping.php");
         }
 ?>

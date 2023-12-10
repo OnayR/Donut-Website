@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Registration</title>
     <link href="css/login.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -16,7 +16,10 @@
 
 <body>
     <div class="head-div">
-    <h1 class="head">Register</h1>
+        <div class="head-image">
+        <img src="Images/Donut.png">
+</div>
+    <h1 class="head">Register here</h1>
 </div>
     <div class="container">
         <div class="wrapper">

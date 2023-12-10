@@ -19,12 +19,44 @@ body {
     height: 100vh;
 }
 
+.head-image {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 30%;
+    margin-top: -20%;
+    left: 50%;
+    margin-left: -20%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@font-face {
+    font-family: Carnero;
+    src: url(../Fonts/carnero/Carnero\ Black.otf);
+}
+
 .head {
+    font-family: Carnero;
     position: relative;
     top: 50%;
     font-size: 40px;
     margin: 20px 0;
     text-align: center;
+    color: #ede6d6;
+}
+
+.login-text {
+    font-family: Carnero;
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+    color: #ede6d6;
+    margin-bottom: 10vh;
 }
 
 ::placeholder {
@@ -36,7 +68,7 @@ body {
     height: 94vh;
     margin: 3vh 3vh;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(237, 230, 214, 0.7);
     border-radius: 15px;
     float: right;
 }
@@ -67,16 +99,22 @@ body {
     border-radius: 5px;
     border: none;
     outline: none;
-    background: #1E90FF;
+    background: #7B3F00;
     color: white;
     cursor: pointer;
+}
+
+.form-button:hover {
+    background: #5B2C00;
 }
 
 
 
 .link {
+    position: absolute;
+    top: 90vh;
+    right: 5vw;
     text-decoration: none;
-    color: white;
+    color: #faebd7;
     font-size: 20px;
-    margin: 0 10px;
 }

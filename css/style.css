@@ -35,7 +35,7 @@ body {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
-    height: 10%;
+    height: 6.5vh;
     z-index: 2;
 }
 
@@ -45,9 +45,32 @@ body {
     background: rgba(0, 0, 0, 0.1);
     text-align: right;
     backdrop-filter: blur(10px);
+    padding-right: 4vw;
     width: 100%;
+    height: 6.5vh;
     top: 0;
     z-index: 10;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    color: black;
+    text-align: left;
+    background-color: #f9f9f9;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .donut {
@@ -56,10 +79,12 @@ body {
 }
 
 .text {
+    font-size: 1.5vw;
     display: inline-flex;
     margin-right: 1vw;
-    margin-top: 20px;
+    margin-top: 1.5vh;
     margin-bottom: 30px;
+    color: #faebd7;
 }
 
 .holder {

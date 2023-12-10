@@ -23,14 +23,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <header>
         <div class="following">
         <div class="primary-bar-background">
-                <p class="hide">a</p>
+                <p class="hide">a</p>   
             </div>
             <div class="primary-bar">
                 <a href="logout.php">a</a>
                 <h1 class="text">Welcome to My Webpage</h1>
-                <h1 class="text"><a href="index.php">Profile</a></h1>
+                <div class="dropdown">
+                <span class="text">Profile</span>
+                <div class="dropdown-content">
+                <a>hello</a>
+                </div>
+                </div>
                 <a href="shopping.php"><i class="fa-solid fa-cart-shopping fa-2xl text"></i></a>
             </div>
+        </div>
+
 
             <div class="holder">
                 <img class="donut" src="Images/Donut.png">
@@ -91,9 +98,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <?php
         }
     ?>
+
     </section>
-    <input type="submit" value="Buy" class="numberOfDonuts">
+    <input type="submit" value="Save in shopping cart" class="numberOfDonuts">
                 </form>
+    
 
     <div class="spacer2"></div>
     </div>

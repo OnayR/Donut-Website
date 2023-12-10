@@ -8,17 +8,21 @@
 </head>
 <body>
     <div class="head-div">
-    <h1 class="head">Login</h1>
+    <div class="head-image">
+        <img src="Images/Donut.png">
+</div>
+    <h1 class="head">Welcome Back!</h1>
+    
 </div>
     <div class="container">
+        <h2 class="login-text">Login</h2>
         <div class="wrapper">
-    <form method="POST" action="login.php">
-        <input type="text" id="username" name="username" required class="form-input" placeholder="Username:"><br><br>
-        <label for="password" class="form-text">Password:</label>
-        <input type="password" id="password" name="password" required class="form-input" placeholder="Password:"><br><br>
-        <input type="submit" value="Login" class="form-button">
-    </form>
-</div>
+            <form method="POST" action="login.php">
+                <input type="text" id="username" name="username" required class="form-input" placeholder="Username"><br><br>
+                <input type="password" id="password" name="password" required class="form-input" placeholder="Password"><br><br>
+                <input type="submit" value="Login" class="form-button">
+            </form>
+        </div>
 <p class="link">Don't have an account? <a href="registration.php">Sign up now</a>.</p>
 </div>
 

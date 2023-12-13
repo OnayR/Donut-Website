@@ -93,8 +93,8 @@ if ($medewerker['medewerkerusername'] === $username) {
                 $productdesc = $_POST['productdesc'];
                 $productafbeelding = $file_name;
 
-                $sql = "INSERT INTO donut (iddonut, donutnaam, donutprijs, donuttype, smaak, donutimg, donutdesc)
-                VALUES ($iddonut, '$productnaam', $prijs, '$producttype', '$productsmaak', '$productafbeelding', '$productdesc')";
+                $sql = "INSERT INTO donut (iddonut, donutnaam, donutprijs, donuttype, smaak, donutimg, donutdesc, totaalverkocht)
+                VALUES ($iddonut, '$productnaam', $prijs, '$producttype', '$productsmaak', '$productafbeelding', '$productdesc', '0')";
 
                 $singlename = "SELECT donutnaam FROM donut WHERE donutnaam = '$productnaam'";
                 $stmt = $pdo->query($singlename);

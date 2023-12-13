@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../Images/background/background.jpg");
+    background-size: cover;
+}
+
+@font-face {
+    font-family: Carnero;
+    src: url(../Fonts/carnero/Carnero\ Black.otf);
+}
+
+@font-face {
+    font-family: Carnero-thin;
+    src: url(../Fonts/carnero/Carnero\ regular.otf);
+}
+
+.headertext {
+    font-family: Carnero;
+    font-size: 3.5vh;
+    color: #faebd7;
+    text-align: center;
+    margin-top: 2vh;
+
+}
+
+.navbar {
+    position: absolute;
+    width: 50%;
+    top: 40%;
+    left: 25%;
+    font-size: 2.5vh;
+    font-family: Carnero;
+}
+
+.navbarcontent {
+    transition: 0.5s;
+    color: #faebd7;
+
+}
+
+.navbar:active {
+    color: #faebd7;
+
+}
+
+.navbarcontent:hover {
+    color: #faebd7;
+    transform: scale(1.1);
+
+}
+
+.besteldatum {
+    width: 25%;
+    min-height: 100%;
+}
+
+.bestelinformatie {
+    position: relative;
+    font-family: Carnero-thin;
+    width: 70%;
+    height: 100%;
+}
+
+.bestellingcontainer {
+    width: 30%;
+    height: 85vh;
+    float: right;
+    position: relative;
+    margin: 5vh 13vw 2vh 0vw;
+    overflow-y: auto;
+}
+
+.bestelling {
+    padding: 1.5%;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    background: rgba(237, 230, 214, 0.7);
+}

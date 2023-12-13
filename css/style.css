@@ -11,9 +11,19 @@ body {
     background-size: cover;
 }
 
+@font-face {
+    font-family: Carnero;
+    src: url(../Fonts/carnero/Carnero\ Black.otf);
+}
+
+@font-face {
+    font-family: Carnero-thin;
+    src: url(../Fonts/carnero/Carnero\ regular.otf);
+}
+
 /* temporary */
 .spacer2 {
-    height: 100vw;
+    height: 40vh;
 
 }
 
@@ -54,23 +64,35 @@ body {
 
 .dropdown {
     position: relative;
-    display: inline-flex;
+    display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
+    opacity: 0;
     position: absolute;
+    border-radius: 10px;
     color: black;
     text-align: left;
-    background-color: #f9f9f9;
+    background-color: #faebd7;
     min-width: 60px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
+    padding: 6px 3px;
     z-index: 1;
+    font-size: 20px;
+    transform: translateY(-10px);
+    transition: 0.25s;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.dropdown-text {
+    margin-top: 3vh;
+    margin-right: 1vw;
+    margin-bottom: 2vh;
+    margin-left: 0.2vw;
 }
 
 .donut {
@@ -79,11 +101,11 @@ body {
 }
 
 .text {
+    font-family: Carnero-thin;
     font-size: 1.5vw;
     display: inline-flex;
     margin-right: 1vw;
     margin-top: 1.5vh;
-    margin-bottom: 30px;
     color: #faebd7;
 }
 
@@ -156,6 +178,7 @@ body {
 
 /* product-catagory */
 .product {
+    min-height: 350px;
     overflow: hidden;
     background-size: cover;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
@@ -163,9 +186,15 @@ body {
 }
 
 .product-category {
-    margin-top: 1vw;
-    margin-bottom: 1.5vw;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
     margin-left: 1vw;
+    color: #faebd7;
+    font-family: Carnero;
+}
+
+.allproducts {
+    margin-top: 10vh;
 }
 
 .sales {
@@ -244,14 +273,19 @@ body {
     margin-right: 1vw;
     border-radius: 10px;
     min-width: 230px;
-    min-width: 230px;
+    min-height: 300px;
     overflow: hidden;
 }
 
-.product {
-    position: relative;
-    overflow: hidden;
-    padding: 20px;
+.submit-button {
+    width: 10%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #faebd7;
+    float: right;
+    margin: 1vh 1vw;
 }
 
 

@@ -41,9 +41,9 @@ $aantalarray = array();
               echo "<form action='shopping.php' method='post'>";
               echo $donut->get_name() . " " . $donut->get_price() . "x " . "€" . $donuts['donutprijs'] . " = " . "€" . ($donuts['donutprijs'] * $donut->get_price());
               ?>
-              <button type="submit" name="delete" value="<?php echo $donut->get_name(); ?>">X</button>
-              <button type="submit" name="add" value="<?php echo $donut->get_name(); ?>">+</button>
-              <button type="submit" name="remove" value="<?php echo $donut->get_name(); ?>">-</button>
+              <button type="submit" name="delete" value="<?php echo $donut->get_name(); ?>" class="delete">X</button>
+              <button type="submit" name="add" value="<?php echo $donut->get_name(); ?>" class="plus">+</button>
+              <button type="submit" name="remove" value="<?php echo $donut->get_name(); ?>" class="min">-</button>
               <?php
               echo "<br>";
               echo "€" . $donut->get_price() * $donuts['donutprijs'];
@@ -59,7 +59,7 @@ $aantalarray = array();
           echo "€" . $donuttotaal;
           echo "<br>";
           ?>
-          <button type="submit" name="bestel" value="bestel">Bestel</button>
+          <button type="submit" name="bestel" value="bestel" class="bestel">Bestel</button>
           </form>
         </div>
     </header>
@@ -136,6 +136,9 @@ if(isset($_POST['bestel'])) {
     $sqldonutbestelling = "INSERT INTO donutbestelling (iddonutbestelling, iddonut, idbestelling, aantal, prijs, donutnaam)
      VALUES ('$iddonutbestelling', '" . $donuts['iddonut'] . "', '$idbestelling', '" . $aantalarray[$bestelling] . "', $aantalarray[$bestelling] * '" . $donuts['donutprijs'] . "', '$aantal')";
     $stmtdonutbestelling = $pdo->query($sqldonutbestelling);
+
+    $sqldonutaantal = "UPDATE donut SET totaalverkocht = totaalverkocht + '" . $aantalarray[$bestelling] . "' WHERE donutnaam = '$aantal'";
+    $stmtdonutaantal = $pdo->query($sqldonutaantal);
 
     $iddonutbestelling++;
   }

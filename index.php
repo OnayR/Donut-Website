@@ -6,6 +6,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +28,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <p class="hide">a</p>   
             </div>
             <div class="primary-bar">
-                <a href="logout.php">a</a>
-                <h1 class="text">Welcome to My Webpage</h1>
                 <div class="dropdown">
                 <span class="text">Profile</span>
                 <div class="dropdown-content">
-                <a>hello</a>
+                <a href="bestellingen.php" class="dropdown-text">Orders</a>
+                <a class="dropdown-text">Profile</a>
+                <a href="logout.php" class="dropdown-text">logout</a>
                 </div>
                 </div>
                 <a href="shopping.php"><i class="fa-solid fa-cart-shopping fa-2xl text"></i></a>
@@ -64,7 +66,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="sales">
             <!-- All the products -->
             <?php
-        $sql = "SELECT * FROM donut";
+        $sql = "SELECT * FROM donut ORDER BY totaalverkocht DESC LIMIT 6";
         $stmt = $pdo->query($sql);
         $donuts = $stmt->fetchAll();
         
@@ -100,13 +102,61 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     ?>
 
     </section>
-    <input type="submit" value="Save in shopping cart" class="numberOfDonuts">
+    <input type="submit" value="Save in shopping cart" class="submit-button" name="submit-best">
                 </form>
+
+    <!-- <div class="spacer">
+        <p class="hide">a</p>
+    </div> -->
     
+
+    <!-- Second section of products -->
+    <h1 class="product-category allproducts">All of our products</h1>
+    <section class="product">
+
+    <div class="sales">
+        <?php
+        $sqlall = "SELECT * FROM donut";
+        $stmtall = $pdo->query($sqlall);
+        $donutsall = $stmtall->fetchAll();
+
+    foreach($donutsall as $donut) {
+            ?>  
+            <!DOCTYPE html>
+            
+            <div class="specific-sale">
+                <div class="product-image">
+                    <button type="submit" name="donut-buy<?php echo $donut['iddonut'] ?>" class="donut-buy">
+                        <h2 class="buyme-text">Buy me!</h2>
+                        <p class="info-texts"><?php echo $donut['donutdesc'] ?></p>
+                        <img src="Images/saved-donuts/<?php echo $donut['donutimg'] ?>" class="donut-sale">
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h1 class="donut-name"><?php echo $donut['donutnaam'] ?></h1>
+                    <p class="donut-price">€<?php echo $donut['donutprijs'] ?> st.</p>
+                    <form method="POST" action="index.php">
+                    <select name="numberOfDonuts<?php echo $donut['iddonut'] ?>" class="donut-amount">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            </html>
+    <?php
+        }
+    ?>
+
+    </section>
+    <input type="submit" value="Save in shopping cart" class="submit-button" name="submit-all">
+                </form>
 
     <div class="spacer2"></div>
     </div>
-
 
 
     <!--Libraries-->
@@ -127,13 +177,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </html>
 
 <?php
-include 'Donut.php';
+    include 'Donut.php';
 
+    $donutprijzen = array();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            $donutprijzen = array();
-
+            if(isset($_POST["submit-best"])) {
             foreach($donuts as $donut) {
                 $username = $_SESSION["username"];
 
@@ -142,10 +191,6 @@ include 'Donut.php';
                 $sql = "SELECT donutnaam FROM donut WHERE iddonut = '$iddonut'";
                 $stmt = $pdo->query($sql);
                 $donuts = $stmt->fetchAll();
-    
-                $sqlklant = "SELECT * FROM klant WHERE username = '$username'";
-                $stmtklant = $pdo->query($sqlklant);
-                $klanten = $stmtklant->fetchAll();
     
                 $amount = $_POST['numberOfDonuts' . $donut['iddonut']];
                 $amount = (int)$amount;
@@ -158,5 +203,40 @@ include 'Donut.php';
                 array_push($donutprijzen, $d);
             }
             $_SESSION['donutprijzen'] = $donutprijzen;
+            $_SESSION['bestelling'] = true;
+        }
+        if(isset($_POST["submit-all"])) {
+            foreach($donutsall as $donut) {
+                $username = $_SESSION["username"];
+
+                $iddonut = $donut['iddonut'];
+    
+                $sql = "SELECT donutnaam FROM donut WHERE iddonut = '$iddonut'";
+                $stmt = $pdo->query($sql);
+                $donuts = $stmt->fetchAll();
+    
+                $amount = $_POST['numberOfDonuts' . $donut['iddonut']];
+                $amount = (int)$amount;
+
+                if(isset($_POST['donut-buy' . $donut['iddonut']])) {
+                    $amount++;
+                  }
+                
+                $d = new Donut($donut['donutnaam'], $amount);
+                array_push($donutprijzen, $d);
+            }
+            $_SESSION['donutprijzen'] = $donutprijzen;
+            $_SESSION['bestelling'] = true;
+        }
+        foreach($donutsall as $donut) {
+            $amount = 0;
+            if(isset($_POST['donut-buy' . $donut['iddonut']])) {
+                $amount++;
+              }
+            $d = new Donut($donut['donutnaam'], $amount);
+            array_push($donutprijzen, $d);
+            $_SESSION['donutprijzen'] = $donutprijzen;
+            $_SESSION['bestelling'] = true;
+        }
         }
 ?>

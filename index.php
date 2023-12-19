@@ -59,9 +59,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <p class="hide">a</p>
     </div>
 
-    <h1 class="product-category">best selling</h1>
+    <h1 class="product-category">Best selling</h1>
     <section class="product">
-        <!-- <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+        <!--<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
         <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
         <div class="sales">
             <!-- All the products -->
@@ -113,7 +113,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- Second section of products -->
     <h1 class="product-category allproducts">All of our products</h1>
     <section class="product">
-
+    <!--<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
     <div class="sales">
         <?php
         $sqlall = "SELECT * FROM donut";
@@ -182,30 +183,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $donutprijzen = array();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if(isset($_POST["submit-best"])) {
-            foreach($donuts as $donut) {
-                $username = $_SESSION["username"];
-
-                $iddonut = $donut['iddonut'];
-    
-                $sql = "SELECT donutnaam FROM donut WHERE iddonut = '$iddonut'";
-                $stmt = $pdo->query($sql);
-                $donuts = $stmt->fetchAll();
-    
-                $amount = $_POST['numberOfDonuts' . $donut['iddonut']];
-                $amount = (int)$amount;
-
-                if(isset($_POST['donut-buy' . $donut['iddonut']])) {
-                    $amount++;
-                  }
-                
-                $d = new Donut($donut['donutnaam'], $amount);
-                array_push($donutprijzen, $d);
-            }
-            $_SESSION['donutprijzen'] = $donutprijzen;
-            $_SESSION['bestelling'] = true;
-        }
-        if(isset($_POST["submit-all"])) {
             foreach($donutsall as $donut) {
                 $username = $_SESSION["username"];
 
@@ -227,16 +204,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             }
             $_SESSION['donutprijzen'] = $donutprijzen;
             $_SESSION['bestelling'] = true;
-        }
-        foreach($donutsall as $donut) {
-            $amount = 0;
-            if(isset($_POST['donut-buy' . $donut['iddonut']])) {
-                $amount++;
-              }
-            $d = new Donut($donut['donutnaam'], $amount);
-            array_push($donutprijzen, $d);
-            $_SESSION['donutprijzen'] = $donutprijzen;
-            $_SESSION['bestelling'] = true;
-        }
         }
 ?>

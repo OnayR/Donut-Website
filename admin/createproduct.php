@@ -38,7 +38,7 @@ if ($medewerker['medewerkerusername'] === $username) {
     <div class="content" id="home">
         <h2>Admin <?php echo $username ?></h2>
         <p>Admin page</p>
-
+    <div class="createproduct">
         <form method="POST" action="createproduct.php" enctype="multipart/form-data">
             <label for="productnaam">Productnaam</label>
             <input type="text" name="productnaam"><br><br>
@@ -52,8 +52,26 @@ if ($medewerker['medewerkerusername'] === $username) {
             <input type="text" name="productdesc"><br><br>
             <label for="productafbeelding">Productafbeelding</label>
             <input type="file" id="productafbeelding" name="productafbeelding"><br><br>
-            <input type="submit" value="add">
+            <input type="submit" value="add" name="adduser">
         </form>
+    </div>
+        <div class="editproduct">
+        <form method="POST" action="createproduct.php">
+            <label for="productnaam">Productnaam</label>
+            <input type="text" name="productnaam"><br><br>
+            <label for="prijs">Prijs</label>
+            <input type="number" name="prijs" step=".01"><br><br>
+            <label for="producttype">Producttype</label>
+            <input type="text" name="producttype"><br><br>
+            <label for="productsmaak">Productsmaak</label>
+            <input type="text" name="productsmaak"><br><br>
+            <label for="productdesc">Productdesc</label>
+            <input type="text" name="productdesc"><br><br>
+            <label for="productafbeelding">Productafbeelding</label>
+            <input type="file" id="productafbeelding" name="productafbeelding"><br><br>
+            <input type="submit" value="edit" name="edituser">
+        </div>
+    </div>
 
         <?php
 
@@ -62,6 +80,7 @@ if ($medewerker['medewerkerusername'] === $username) {
             $donuts = $stmt->fetchAll();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(isset($_POST['adduser'])) {
                 if(isset($_FILES['productafbeelding'])){
                     $file_name = $_FILES['productafbeelding']['name'];
                     $file_tmp =$_FILES['productafbeelding']['tmp_name'];
@@ -109,6 +128,8 @@ if ($medewerker['medewerkerusername'] === $username) {
                     echo "Error: Please try again";
                 }
             }
+        }
+
         }
         ?>
     </div>

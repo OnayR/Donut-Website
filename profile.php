@@ -1,5 +1,5 @@
 <?php
-require_once 'confiq.php';
+require_once 'include/config.php';
 
 ?>
 <!DOCTYPE html>
@@ -10,6 +10,6 @@ require_once 'confiq.php';
     <title>Document</title>
 </head>
 <body>
-    
+    <p>Hier komt de profiel pagina</p>
 </body>
 </html>

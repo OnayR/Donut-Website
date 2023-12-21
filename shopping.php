@@ -1,12 +1,13 @@
 <?php
-include 'Donut.php';
-include_once "config.php";
+include 'include/Donut.php';
+include_once "include/config.php";
 session_start();
 
 $donutprijzen = $_SESSION['donutprijzen'];
 
 $bestellingarray = array();
 $aantalarray = array();
+
 ?>
 
 <!DOCTYPE html>

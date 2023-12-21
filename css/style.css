@@ -229,7 +229,7 @@ body {
 .donut-buy {
     width: 100%;
     height: 100%;
-    background-color: pink;
+    background-color: #faebd7;
     border: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -269,7 +269,7 @@ body {
 }
 
 .specific-sale {
-    background-color: white;
+    background-color: rgba(250, 235, 215, 0.5);
     margin-right: 1vw;
     border-radius: 10px;
     min-width: 230px;
@@ -328,4 +328,45 @@ body {
 .nxt-btn:hover {
     transition: 1s;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+}
+
+@media(max-width: 1000px) {
+    .sales {
+        height: 50vh;
+    }
+
+    .specific-sale {
+        min-width: 200px;
+        min-height: 250px;
+    }
+
+    .donut-name,
+    .donut-price {
+        font-size: 1.5vw;
+    }
+
+    .donut-amount {
+        width: 30%;
+    }
+
+    .donut-buy {
+        font-size: 1.5vw;
+    }
+
+    .buyme-text {
+        font-size: 1.5vw;
+    }
+
+    .info-texts {
+        font-size: 1.5vw;
+    }
+
+    .submit-button {
+        font-size: 1.5vw;
+    }
+
+    .pre-btn,
+    .nxt-btn {
+        width: 15vw;
+    }
 }

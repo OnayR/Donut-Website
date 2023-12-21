@@ -41,7 +41,7 @@
 <?php
 session_start();
 
-include_once 'config.php';
+include_once 'include/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idklant = rand(100000, 999999);

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
+require_once "../include/config.php";
 
 $username = $_SESSION["username"];
 $sql = "SELECT * FROM medewerker WHERE medewerkerusername = '$username'";

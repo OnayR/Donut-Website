@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once "config.php";
+require_once "include/config.php";
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -32,7 +32,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <span class="text">Profile</span>
                 <div class="dropdown-content">
                 <a href="bestellingen.php" class="dropdown-text">Orders</a>
-                <a class="dropdown-text">Profile</a>
+                <a href="profile.php" class="dropdown-text">Profile</a>
                 <a href="logout.php" class="dropdown-text">logout</a>
                 </div>
                 </div>
@@ -178,7 +178,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </html>
 
 <?php
-    include 'Donut.php';
+    include 'include/Donut.php';
 
     $donutprijzen = array();
 

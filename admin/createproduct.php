@@ -32,11 +32,11 @@ if ($medewerker['medewerkerusername'] === $username) {
         <a href="admin.php">Home</a>
         <a href="createadmin.php">Create User</a>
         <a class="active" href="createproduct.php">Create Product</a>
-        <a href="../index.php">Back to website</a>
+        <a href="../main/index.php">Back to website</a>
     </div>
 
     <div class="content" id="home">
-        <h2>Admin <?php echo $username ?></h2>
+        <h2 class="title">Create Product</h2>
         <p>Admin page</p>
     <div class="createproduct">
         <form method="POST" action="createproduct.php" enctype="multipart/form-data">
@@ -70,16 +70,34 @@ if ($medewerker['medewerkerusername'] === $username) {
             <label for="productafbeelding">Productafbeelding</label>
             <input type="file" id="productafbeelding" name="productafbeelding"><br><br>
             <input type="submit" value="edit" name="edituser">
+            </form>
         </div>
+
+        <div class="deleteproduct">
+            <form method="POST" action="createproduct.php">
+                <select>
+                    <?php
+                    $sql = "SELECT * FROM donut";
+                    $stmt = $pdo->query($sql);
+                    $donuts = $stmt->fetchAll();
+
+                    foreach($donuts as $donut) {
+                        ?>
+                        <option value="<?php echo $donut['donutnaam'] ?>"><?php echo $donut['donutnaam'] ?></option>
+                        <?php
+                    }
+                    ?>
+            </form>
+</div>
     </div>
+<?php
 
-        <?php
-
-            $sql = "SELECT * FROM donut";
-            $stmt = $pdo->query($sql);
-            $donuts = $stmt->fetchAll();
+    $sql = "SELECT * FROM donut";
+    $stmt = $pdo->query($sql);
+    $donuts = $stmt->fetchAll();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(isset($_POST['editadduser'])) {
                 if(isset($_POST['adduser'])) {
                 if(isset($_FILES['productafbeelding'])){
                     $file_name = $_FILES['productafbeelding']['name'];
@@ -129,8 +147,8 @@ if ($medewerker['medewerkerusername'] === $username) {
                 }
             }
         }
-
-        }
+    }    
+    }
         ?>
     </div>
     </body>

@@ -32,11 +32,11 @@ if ($medewerker['medewerkerusername'] === $username) {
         <a href="admin.php">Home</a>
         <a class="active" href="createadmin.php">Create User</a>
         <a href="createproduct.php">Create Product</a>
-        <a href="../index.php">Back to website</a>
+        <a href="../main/index.php">Back to website</a>
     </div>
 
     <div class="content" id="home">
-        <h2>Admin <?php echo $username ?></h2>
+        <h2 class="title">Admin <?php echo $username ?></h2>
         <p>Admin page</p>
 
         <form method="POST" action="createadmin.php" enctype="multipart/form-data">

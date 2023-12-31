@@ -1,38 +1,61 @@
- .sidebar {
-     margin: 0;
-     padding: 0;
-     width: 200px;
-     background-color: #f1f1f1;
-     position: fixed;
-     height: 100%;
-     overflow: auto;
- }
+@font-face {
+    font-family: Carnero;
+    src: url(../Fonts/carnero/Carnero\ Black.otf);
+}
 
- .sidebar a {
-     display: block;
-     color: black;
-     padding: 16px;
-     text-decoration: none;
- }
+@font-face {
+    font-family: Carnero-thin;
+    src: url(../Fonts/carnero/Carnero\ Regular.otf);
+}
 
- .sidebar a.active {
-     background-color: #04AA6D;
-     color: white;
- }
+body {
+    background-image: url(../Images/background/background.jpg);
+    color: #faebd7;
+    font-family: Carnero-thin;
+}
 
- .sidebar a:hover:not(.active) {
-     background-color: #555;
-     color: white;
- }
+.title {
+    font-family: Carnero;
+}
 
- div.content {
-     margin-left: 200px;
-     padding: 1px 16px;
-     height: 1000px;
- }
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgba(237, 230, 214, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
 
- .createcontent,
- .editcontent {
-     display: inline-flex;
-     width: 40%;
- }
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    padding-left: 25px;
+    background-color: #fdd8a1;
+    color: black;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+.createcontent,
+.editcontent {
+    display: inline-flex;
+    width: 40%;
+}

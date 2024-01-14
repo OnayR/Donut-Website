@@ -1,5 +1,6 @@
 <?php 
 session_start();
+// header("Refresh:10");
 require_once "../include/config.php";
 ?>
 
@@ -15,24 +16,24 @@ require_once "../include/config.php";
 
 <body>
 
-<header>
+    <header>
         <div class="following">
-        <div class="primary-bar-background">
-                <p class="hide">a</p>   
+            <div class="primary-bar-background">
+                <p class="hide">a</p>
             </div>
             <div class="primary-bar">
-            <?php
+                <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 echo "<a href='../profile/login.php' class='text'>Login</a>";
                 } else {
                 ?>
                 <div class="dropdown">
-                <span class="text">Profile</span>
-                <div class="dropdown-content">
-                <a href="bestellingen.php" class="dropdown-text">Orders</a>
-                <a href="../profile/profile.php" class="dropdown-text">Profile</a>
-                <a href="../include/logout.php" class="dropdown-text">logout</a>
-                </div>
+                    <span class="text">Profile</span>
+                    <div class="dropdown-content">
+                        <a href="bestellingen.php" class="dropdown-text">Orders</a>
+                        <a href="../profile/profile.php" class="dropdown-text">Profile</a>
+                        <a href="../include/logout.php" class="dropdown-text">logout</a>
+                    </div>
                 </div>
                 <?php
                 }
@@ -42,9 +43,9 @@ require_once "../include/config.php";
         </div>
 
 
-            <div class="holder">
-                <img class="donut" src="../Images/Donut.png">
-            </div>
+        <div class="holder">
+            <img class="donut" src="../Images/Donut.png">
+        </div>
     </header>
 
     <div class="container">
@@ -64,7 +65,7 @@ require_once "../include/config.php";
     <section class="product">
         <!--<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
         <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
-        <div class="sales">
+        <div class="sales1">
             <!-- All the products -->
             <?php
         $sql = "SELECT * FROM donut ORDER BY totaalverkocht DESC LIMIT 6";
@@ -72,61 +73,66 @@ require_once "../include/config.php";
         $donuts = $stmt->fetchAll();
         
         foreach($donuts as $donut) {
-            ?>  
-            <!DOCTYPE html>
-            
+            ?>
+
             <div class="specific-sale">
                 <div class="product-image">
                     <button type="submit" name="donut-buy<?php echo $donut['iddonut'] ?>" class="donut-buy">
                         <h2 class="buyme-text">Buy me!</h2>
-                        <p class="info-texts"><?php echo $donut['donutdesc'] ?></p>
+                        <p class="info-texts">
+                            <?php echo $donut['donutdesc'] ?>
+                        </p>
                         <img src="../Images/saved-donuts/<?php echo $donut['donutimg'] ?>" class="donut-sale">
                     </button>
                 </div>
                 <div class="product-info">
-                    <h1 class="donut-name"><?php echo $donut['donutnaam'] ?></h1>
-                    <p class="donut-price">€<?php echo $donut['donutprijs'] ?> st.</p>
+                    <h1 class="donut-name">
+                        <?php echo $donut['donutnaam'] ?>
+                    </h1>
+                    <p class="donut-price">€
+                        <?php echo $donut['donutprijs'] ?> st.
+                    </p>
                     <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 } else {
                     ?>
                     <form method="POST" action="index.php">
-                    <select name="numberOfDonuts<?php echo $donut['iddonut'] ?>" class="donut-amount">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <?php
+                        <select name="numberOfDonuts<?php echo $donut['iddonut'] ?>" class="donut-amount">
+                            <?php
+                                for($i = 0; $i <= 10; $i++) {
+                                    echo "<option value='$i'>$i</option>";
+                                }
+                            ?>
+                        </select>
+                        <?php
                 } ?>
                 </div>
             </div>
-            </html>
-    <?php
+
+</html>
+<?php
         }
     ?>
 
-    </section>
-    <?php
+</section>
+<?php
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         echo "<h5 class='submit-button'>Please login to buy our products!</h5>";
         } else {
         ?>
-        <input type="submit" value="Save in shopping cart" class="submit-button" name="submit-all">
-        </form>
-        <?php
+<input type="submit" value="Save in shopping cart" class="submit-button" name="submit-all">
+</form>
+<?php
         } ?>
 
-    <!-- <div class="spacer">
+<!-- <div class="spacer">
         <p class="hide">a</p>
     </div> -->
-    
 
-    <!-- Second section of products -->
-    <h1 class="product-category allproducts">All of our products</h1>
-    <section class="product">
+
+<!-- Second section of products -->
+<h1 class="product-category allproducts">All of our products</h1>
+<section class="product">
     <!--<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
         <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
     <div class="sales">
@@ -136,70 +142,76 @@ require_once "../include/config.php";
         $donutsall = $stmtall->fetchAll();
 
     foreach($donutsall as $donut) {
-            ?>  
-            <!DOCTYPE html>
-            
-            <div class="specific-sale">
-                <div class="product-image">
-                    <button type="submit" name="donut-buy<?php echo $donut['iddonut'] ?>" class="donut-buy">
-                        <h2 class="buyme-text">Buy me!</h2>
-                        <p class="info-texts"><?php echo $donut['donutdesc'] ?></p>
-                        <img src="../Images/saved-donuts/<?php echo $donut['donutimg'] ?>" class="donut-sale">
-                    </button>
-                </div>
-                <div class="product-info">
-                    <h1 class="donut-name"><?php echo $donut['donutnaam'] ?></h1>
-                    <p class="donut-price">€<?php echo $donut['donutprijs'] ?> st.</p>
-                    <?php
+            ?>
+        <!DOCTYPE html>
+
+        <div class="specific-sale">
+            <div class="product-image">
+                <button type="submit" name="donut-buy<?php echo $donut['iddonut'] ?>" class="donut-buy">
+                    <h2 class="buyme-text">Buy me!</h2>
+                    <p class="info-texts">
+                        <?php echo $donut['donutdesc'] ?>
+                    </p>
+                    <img src="../Images/saved-donuts/<?php echo $donut['donutimg'] ?>" class="donut-sale">
+                </button>
+            </div>
+            <div class="product-info">
+                <h1 class="donut-name">
+                    <?php echo $donut['donutnaam'] ?>
+                </h1>
+                <p class="donut-price">€
+                    <?php echo $donut['donutprijs'] ?> st.
+                </p>
+                <?php
                 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 } else {
                     ?>
-                    <form method="POST" action="index.php">
+                <form method="POST" action="index.php">
                     <select name="numberOfDonuts<?php echo $donut['iddonut'] ?>" class="donut-amount">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <?php
+                            for($i = 0; $i <= 10; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            }
+                        ?>
                     </select>
                     <?php
                 } ?>
-                </div>
             </div>
-            </html>
-    <?php
+        </div>
+
+        </html>
+        <?php
         }
     ?>
 
-    </section>
-    <?php
+</section>
+<?php
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         echo "<h5 class='submit-button'>Please login to buy our products!</h5>";
         } else {
         ?>
-        <input type="submit" value="Save in shopping cart" class="submit-button" name="submit-all">
-        </form>
-        <?php
+<input type="submit" value="Save in shopping cart" class="submit-button" name="submit-all">
+</form>
+<?php
         } ?>
 
-    <div class="spacer2"></div>
-    </div>
+<div class="spacer2"></div>
+</div>
 
 
-    <!--Libraries-->
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.28/dist/lenis.min.js"></script>
+<!--Libraries-->
+<link rel="stylesheet" href="../css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.28/dist/lenis.min.js"></script>
 
-    <!--Javascript Files-->
-    <script defer src="../Javascript/script.js"></script>
-    <script src="../Javascript/Scrollanimations.js"></script>
+<!--Javascript Files-->
+<script defer src="../Javascript/script.js"></script>
+<script src="../Javascript/Scrollanimations.js"></script>
 
-    <!--fonts/icons-->
-    <script src="https://kit.fontawesome.com/0f6a8fd9b7.js" crossorigin="anonymous"></script>
+<!--fonts/icons-->
+<script src="https://kit.fontawesome.com/0f6a8fd9b7.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
@@ -211,7 +223,7 @@ require_once "../include/config.php";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             foreach($donutsall as $donut) {
-                $username = $_SESSION["username"];
+                $username = $_SESSION['username'];
 
                 $iddonut = $donut['iddonut'];
     

@@ -1,11 +1,11 @@
 @font-face {
     font-family: Carnero;
-    src: url(../Fonts/carnero/Carnero\ Black.otf);
+    src: url(../Fonts/carnero/CarneroBlack.otf);
 }
 
 @font-face {
     font-family: Carnero-thin;
-    src: url(../Fonts/carnero/Carnero\ Regular.otf);
+    src: url(../Fonts/carnero/CarneroRegular.otf);
 }
 
 body {

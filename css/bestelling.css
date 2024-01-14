@@ -11,12 +11,12 @@ body {
 
 @font-face {
     font-family: Carnero;
-    src: url(../Fonts/carnero/Carnero\ Black.otf);
+    src: url(../Fonts/carnero/CarneroBlack.otf);
 }
 
 @font-face {
     font-family: Carnero-thin;
-    src: url(../Fonts/carnero/Carnero\ regular.otf);
+    src: url(../Fonts/carnero/CarneroRegular.otf);
 }
 
 .headertext {

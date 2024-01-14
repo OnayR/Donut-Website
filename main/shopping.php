@@ -148,6 +148,8 @@ if(isset($_POST['bestel'])) {
    VALUES ('$idbestelling', '" . $klant['idklant'] . "', '" . date("Y-m-d") . "', '$donuttotaal')";
   $stmtbestelling = $pdo->query($sqlbestelling);
 
+  mail("rida541552@gmail.com", "Bestelling", "Uw bestelling is geplaatst!");
+
   echo "<script>alert('Bestelling geplaatst!')</script>";
 }
 ?>

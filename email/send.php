@@ -14,7 +14,6 @@ if(isset($_POST['bestel'])){
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'donotwebshop@gmail.com';
-    $mail->Password = 'embymldqnlayqaau';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
 

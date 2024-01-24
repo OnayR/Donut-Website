@@ -55,7 +55,7 @@ if ($medewerker['medewerkerusername'] === $username) {
             <input type="submit" value="add" name="adduser">
         </form>
     </div>
-        <div class="editproduct">
+        <!-- <div class="editproduct">
         <form method="POST" action="createproduct.php">
             <label for="productnaam">Productnaam</label>
             <input type="text" name="productnaam"><br><br>
@@ -71,9 +71,9 @@ if ($medewerker['medewerkerusername'] === $username) {
             <input type="file" id="productafbeelding" name="productafbeelding"><br><br>
             <input type="submit" value="edit" name="edituser">
             </form>
-        </div>
+        </div> -->
 
-        <div class="deleteproduct">
+        <!-- <div class="deleteproduct">
             <form method="POST" action="createproduct.php">
                 <select>
                     <?php
@@ -88,7 +88,7 @@ if ($medewerker['medewerkerusername'] === $username) {
                     }
                     ?>
             </form>
-</div>
+</div> -->
     </div>
 <?php
 
@@ -131,7 +131,7 @@ if ($medewerker['medewerkerusername'] === $username) {
                 $productafbeelding = $file_name;
 
                 $sql = "INSERT INTO donut (iddonut, donutnaam, donutprijs, donuttype, smaak, donutimg, donutdesc, totaalverkocht)
-                VALUES ($iddonut, '$productnaam', $prijs, '$producttype', '$productsmaak', '$productafbeelding', '$productdesc', '0')";
+                VALUES ($iddonut, '$productnaam', $prijs, '$producttype', '$productsmaak', '$productafbeelding', '$productdesc', 0)";
 
                 $singlename = "SELECT donutnaam FROM donut WHERE donutnaam = '$productnaam'";
                 $stmt = $pdo->query($singlename);

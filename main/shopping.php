@@ -1,6 +1,7 @@
 <?php
 include '../include/Donut.php';
 include_once '../include/config.php';
+require_once '../email/send.php';
 session_start();
 
 $donutprijzen = $_SESSION['donutprijzen'];
@@ -39,7 +40,7 @@ $aantalarray = array();
               $donuttotaal =$donuttotaal + $donut->get_price() * $donuts['donutprijs'];
 
               // Moest boven de eerste echo staan zodat de eerste form niet onder de eerste echo kwam te staan.
-              echo "<form action='shopping.php' method='post'>";
+              echo "<form action='../email/send.php' method='post'>";
               echo $donut->get_name() . " " . $donut->get_price() . "x " . "€" . $donuts['donutprijs'] . " = " . "€" . ($donuts['donutprijs'] * $donut->get_price());
               ?>
               <button type="submit" name="delete" value="<?php echo $donut->get_name(); ?>" class="delete">X</button>
@@ -148,8 +149,32 @@ if(isset($_POST['bestel'])) {
    VALUES ('$idbestelling', '" . $klant['idklant'] . "', '" . date("Y-m-d") . "', '$donuttotaal')";
   $stmtbestelling = $pdo->query($sqlbestelling);
 
-  mail("rida541552@gmail.com", "Bestelling", "Uw bestelling is geplaatst!");
+  $mail = new PHPMailer(true);
 
-  echo "<script>alert('Bestelling geplaatst!')</script>";
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'donotwebshop@gmail.com';
+    $mail->Password = 'embymldqnlayqaau';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+
+    $mail->setFrom('donotwebshop@gmail.com');
+
+    $mail->addAddress('rida541552@gmail.com');
+
+    $mail->isHTML(true);
+
+    $mail->Subject = 'Donot bestelling';
+    $mail->Body = 'hello';
+
+    $mail->send();
+
+    echo "
+    <script>
+        alert('Email is verzonden');
+        document.location.href = '../main/index.php';
+    </script>
+    ";
 }
 ?>

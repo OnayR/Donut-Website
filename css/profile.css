@@ -1,0 +1,61 @@
+@font-face {
+    font-family: Carnero;
+    src: url(../Fonts/carnero/CarneroBlack.otf);
+}
+
+@font-face {
+    font-family: Carnero-thin;
+    src: url(../Fonts/carnero/CarneroRegular.otf);
+}
+
+body {
+    background-image: url(../Images/background/background.jpg);
+    color: #faebd7;
+    font-family: Carnero-thin;
+}
+
+.title {
+    font-family: Carnero;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: rgba(237, 230, 214, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    padding-left: 25px;
+    background-color: #fdd8a1;
+    color: black;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+.createcontent,
+.editcontent {
+    display: inline-flex;
+    width: 40%;
+}
